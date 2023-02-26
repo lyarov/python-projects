@@ -1,2 +1,2 @@
-# simple-projects-for-python
-simple projects for python
+# project-python
+### MoreMkDir.py - создаватель папок (по шаблону типо Папка1, Папка2 или каждой своё название)
