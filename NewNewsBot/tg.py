@@ -8,7 +8,7 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 import feedparser
 import time
 
-bot = Bot(token='5860930505:AAHTOaNvRQQ0rQzBI6Mt9an99ghRhSzH8UI')
+bot = Bot(token='')
 dp = Dispatcher(bot)
 
 feeds = ['https://www.ixbt.com/export/news.rss', 'Ixbt',
