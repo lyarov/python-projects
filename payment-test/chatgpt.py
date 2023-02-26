@@ -1,6 +1,6 @@
 import openai
 
-OPENAI_API_KEY = "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"
+OPENAI_API_KEY = ""
 openai.api_key = OPENAI_API_KEY
 # you can name this function anything you want, the name "logic" is arbitrary
 # Set up the model and prompt
