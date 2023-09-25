@@ -1,20 +1,20 @@
-import math
-E = 3e6 
-epsilon_0 = 8.85e-12
-epsilon = 1
+n, m = map(int, input().split())
+res1 = []
+res2 = []
+a = []
 
-r1 = float(input("Введите диаметр первого шара (м): "))
-r2 = float(input("Введите диаметр второго шара (м): "))
-r3 = float(input("Введите диаметр третьего шара (м): "))
+for i in range(n):
+    t = list(map(int, input().split()))
+    mn = min(t)
+    res1.append(mn)
+    a.append(t)
 
-def calculate_qmax(radius):
-    return E / (4 * math.pi * epsilon_0 * epsilon * radius ** 2)
+res1.sort()
 
-qmax1 = calculate_qmax(r1 / 2)
-qmax2 = calculate_qmax(r2 / 2)
-qmax3 = calculate_qmax(r3 / 2)
+for i in range(m):
+    mx = max(a[j][i] for j in range(n))
+    res2.append(mx)
 
-# Вывод результатов
-print(f"Максимальный предельный заряд для шара с диаметром {r1} м: {qmax1} Кл")
-print(f"Максимальный предельный заряд для шара с диаметром {r2} м: {qmax2} Кл")
-print(f"Максимальный предельный заряд для шара с диаметром {r3} м: {qmax3} Кл")
+res2.sort()
+
+print(res1[-1], res2[0])
