@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Device Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Исходные данные JSON
+    const devices = [[{"deviceId":25539700,"routeId":20518233,"directionIndex":1,"actualPoint":[43.30357402897234,77.01502739370682,31.062661425815122,"2024-01-15T08:11:14Z",176],"routeStops":[],"routeVehicles":[]},{"deviceId":2640898845112129,"routeId":20518233,"directionIndex":1,"actualPoint":[43.28292919065046,76.97624289575076,7.012288198878309,"2024-01-15T08:11:14Z",167],"routeStops":[],"routeVehicles":[]},{"deviceId":2640898811232812,"routeId":20518233,"directionIndex":1,"actualPoint":[43.42611306073421,77.35245282140284,261.2638684492963,"2024-01-15T08:11:14Z",107],"routeStops":[],"routeVehicles":[]},{"deviceId":2640898647382565,"routeId":20518233,"directionIndex":1,"actualPoint":[43.38237010089077,77.40400826836878,178.42273074158118,"2024-01-15T08:11:14Z",12],"routeStops":[],"routeVehicles":[]},{"deviceId":2640898701337695,"routeId":20518233,"directionIndex":1,"actualPoint":[43.38527372206412,77.12082134622919,51.536460208630274,"2024-01-15T08:11:14Z",211],"routeStops":[],"routeVehicles":[]},{"deviceId":2640898793017174,"routeId":20518233,"directionIndex":1,"actualPoint":[43.34908616521412,77.45655999299585,138.57465970900574,"2024-01-15T08:11:14Z",74],"routeStops":[],"routeVehicles":[]},{"deviceId":2640898741569761,"routeId":20518233,"directionIndex":1,"actualPoint":[43.35712436111523,77.07045835704622,251.3011526779954,"2024-01-15T08:11:14Z",69],"routeStops":[],"routeVehicles":[]},{"deviceId":2640898755823729,"routeId":20518233,"directionIndex":1,"actualPoint":[43.26859381465817,76.9609231587466,59.88128026503608,"2024-01-15T08:11:14Z",142],"routeStops":[],"routeVehicles":[]},{"deviceId":2640898618764024,"routeId":20518233,"directionIndex":1,"actualPoint":[43.412475671868336,77.26605214940602,287.6180766465395,"2024-01-15T08:11:14Z",172],"routeStops":[],"routeVehicles":[]},{"deviceId":2640898616107493,"routeId":20518233,"directionIndex":1,"actualPoint":[43.40091914126433,77.21145970311285,87.02672256736685,"2024-01-15T08:11:14Z",133],"routeStops":[],"routeVehicles":[]},{"deviceId":2640898615840030,"routeId":20518233,"directionIndex":0,"actualPoint":[43.358148685756014,77.07766543253975,118.75076088190102,"2024-01-15T08:11:14Z",158],"routeStops":[],"routeVehicles":[]},{"deviceId":28435540,"routeId":20518233,"directionIndex":0,"actualPoint":[43.36057133642467,77.49385721251521,34.45947662554681,"2024-01-15T08:11:14Z"],"routeStops":[],"routeVehicles":[]},{"deviceId":2640898618114471,"routeId":20518233,"directionIndex":0,"actualPoint":[43.40167614607698,77.21514773600327,221.35496028705907,"2024-01-15T08:11:14Z",98],"routeStops":[],"routeVehicles":[]},{"deviceId":2640898843734594,"routeId":20518233,"directionIndex":0,"actualPoint":[43.282400101821686,76.9717760382604,54.97031988988247,"2024-01-15T08:11:14Z",93],"routeStops":[],"routeVehicles":[]},{"deviceId":2640898628732551,"routeId":20518233,"directionIndex":0,"actualPoint":[43.41131931010873,77.26516758439054,74.56707523045338,"2024-01-15T08:11:14Z",94],"routeStops":[],"routeVehicles":[]},{"deviceId":2640898620256186,"routeId":20518233,"directionIndex":0,"actualPoint":[43.2681994210814,76.94022293203015,59.47214949131012,"2024-01-15T08:11:14Z"],"routeStops":[],"routeVehicles":[]},{"deviceId":2640898775833179,"routeId":20518233,"directionIndex":0,"actualPoint":[43.29100853946517,76.9928984974312,107.76121303813413,"2024-01-15T08:11:14Z",114],"routeStops":[],"routeVehicles":[]},{"deviceId":22078769,"routeId":20518233,"directionIndex":0,"actualPoint":[43.36126694637213,77.47394109214451,325.00821084896427,"2024-01-15T08:11:14Z",274],"routeStops":[],"routeVehicles":[]},{"deviceId":2640898627968371,"routeId":20518233,"directionIndex":0,"actualPoint":[43.269408414832604,76.95300565758947,318.91751281234895,"2024-01-15T08:11:14Z",113],"routeStops":[],"routeVehicles":[]},{"deviceId":2640898772993647,"routeId":20518233,"directionIndex":0,"actualPoint":[43.38000316785265,77.4092838436358,323.8831989668968,"2024-01-15T08:11:14Z",150],"routeStops":[],"routeVehicles":[]},{"deviceId":2640898820209916,"routeId":20518233,"directionIndex":0,"actualPoint":[43.330783773829005,77.03234237792908,26.47742933612767,"2024-01-15T08:11:14Z",138],"routeStops":[],"routeVehicles":[]}]];
+    // Инициализация карты
+    const map = L.map('map').setView([43.2813959144301, 76.97884339852392], 12);
+
+    // Добавление тайлов OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Добавление маркеров на карту
+    devices.forEach(device => {
+        const actualPoint = [device.actualPoint[0], device.actualPoint[1]];
+
+      const marker = L.marker(actualPoint).addTo(map);
+      marker.bindPopup(`Device ID: ${device.deviceId}`);
+    });
+  </script>
+</body>
+</html>
